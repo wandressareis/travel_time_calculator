@@ -1,9 +1,18 @@
-## Melhor Ponto de Partida
+## Calculador de Tempo de Percursos
 Script em python que calcula o tempo de n pontos de partida até um objetivo. 
 
-#### Bibliotecas Utilizadas:
+### Bibliotecas:
 
+#### Selenium: 
+- Utilizada para automação: Busca, navegação e web scraping.
 
-    selenium
-    web-driver
-    pulp
+#### WebDriver Manager:
+- API utilizada para manipulação do navegador de forma nativa.
+- Orientada a objetos.
+- Para instalar:
+
+#### Para instalar as bibliotecas acima:
+
+        pip install requirements.txt
+#### Requisito: 
+- É necessário ter o navegador Mozilla Firefox instalado.
