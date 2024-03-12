@@ -14,5 +14,5 @@ Script em python que calcula o tempo de n pontos de partida até um objetivo.
 #### Para instalar as bibliotecas acima:
 
         pip install requirements.txt
-#### Requisito: 
-- É necessário ter o navegador Mozilla Firefox instalado.
+#### Requisitos para a execução do programa: 
+- Navegador Mozilla Firefox instalado.
