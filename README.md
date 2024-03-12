@@ -1,5 +1,5 @@
 ## Calculador de Tempo de Percursos
-Script em python que calcula o tempo de n pontos de partida até um objetivo. 
+Script em python que calcula o tempo de n pontos de partida até um objetivo, considerando tráfego.
 
 ### Bibliotecas:
 
