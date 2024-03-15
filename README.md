@@ -11,6 +11,9 @@ Script em python que calcula o tempo de n pontos de partida até um objetivo.
 - Orientada a objetos.
 - Para instalar:
 
+#### FastAPI:
+- Framework Python para criação de APIs REST
+
 #### Para instalar as bibliotecas acima:
 
         pip install requirements.txt
