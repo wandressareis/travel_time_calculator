@@ -8,8 +8,6 @@ Script em python que calcula o tempo de n pontos de partida até um objetivo, co
 
 #### WebDriver Manager:
 - API utilizada para manipulação do navegador de forma nativa.
-- Orientada a objetos.
-- Para instalar:
 
 #### FastAPI:
 - Framework Python para criação de APIs REST
