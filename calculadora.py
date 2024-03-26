@@ -29,12 +29,12 @@ class GoogleMapsCalculator:
   def gera_pares_distancia(self, bases_do_samu, qth):
     distancia_pares = {}
 
-    for i, partida in enumerate(bases_do_samu):
-      partida, 1
+    for i, base in enumerate(bases_do_samu):
+      partida = base['coordenadas']  # Acessando as coordenadas da base do SAMU
       for j, destino in enumerate(qth):
-        destino, 2
-        self.driver.get("https://www.google.com/maps/dir/" + partida + "/" + destino)
+        destino_coord = [float(coord) for coord in destino.split(',')]  # Convertendo as coordenadas do qth para lista de float
+        self.driver.get("https://www.google.com/maps/dir/" + ','.join(map(str, partida)) + "/" + ','.join(map(str, destino_coord)))
         tempo_par = self.tempo_total()
-        distancia_pares[f'{i}_{j}'] = tempo_par
+        distancia_pares[f'{base["id"]}_{j}'] = tempo_par
 
     return distancia_pares
