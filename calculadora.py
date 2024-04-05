@@ -12,29 +12,41 @@ class GoogleMapsCalculator:
     self.driver.implicitly_wait(2)
 
   def _initialize_driver(self):
-    # return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    # PARA NÃO VISUALIZAR A INTERFACE DO GOOGLE MAPS 
-    options = webdriver.FirefoxOptions()
-    options.add_argument('-headless')
-    driver = webdriver.Firefox(options=options)
-    return driver
+    try:
+      # return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+      # PARA NÃO VISUALIZAR A INTERFACE DO GOOGLE MAPS 
+      options = webdriver.FirefoxOptions()
+      options.add_argument('-headless')
+      driver = webdriver.Firefox(options=options)
+      return driver
+    except Exception as erro:
+      print("Erro ao inicializar o driver:", erro)
+      return None
 
   def tempo_total(self):
-    xpath = '//div[@data-trip-index="0"]//div[contains(text(), "min")]'
-    wait = WebDriverWait(self.driver, timeout=3)
-    elemento_tempo = wait.until(EC.presence_of_element_located((By.XPATH, xpath)))
-    return int(elemento_tempo.text.replace('min', ''))
+    try:
+      xpath = '//div[@data-trip-index="0"]//div[contains(text(), "min")]'
+      wait = WebDriverWait(self.driver, timeout=3)
+      elemento_tempo = wait.until(EC.presence_of_element_located((By.XPATH, xpath)))
+      return str(elemento_tempo.text.replace('', ''))
+    except Exception as erro:
+      print("Erro ao obter tempo total: ", erro)
+      return None
 
   #---------------------------- FUNÇÃO PRINCIPAL ----------------------------------
-  def gera_pares_distancia(self, bases_do_samu, qth):
-    distancia_pares = {}
+  def gera_pares_tempo_percurso(self, bases_do_samu, qth):
+    pares_tempo_percurso = {}
 
     for i, base in enumerate(bases_do_samu):
       partida = base['coordenadas']  # Acessando as coordenadas da base do SAMU
       for j, destino in enumerate(qth):
         destino_coord = [float(coord) for coord in destino.split(',')]  # Convertendo as coordenadas do qth para lista de float
-        self.driver.get("https://www.google.com/maps/dir/" + ','.join(map(str, partida)) + "/" + ','.join(map(str, destino_coord)))
-        tempo_par = self.tempo_total()
-        distancia_pares[f'{base["id"]}_{j}'] = tempo_par
+        try:  
+          self.driver.get("https://www.google.com/maps/dir/" + ','.join(map(str, partida)) + "/" + ','.join(map(str, destino_coord)))
+          tempo_par = self.tempo_total()
+          if tempo_par is not None:
+            pares_tempo_percurso[f'{base["id"]}_{j}'] = tempo_par
+        except Exception as erro:
+          print(f"Erro ao calcular a distância entre {base['id']} e destino {j}: {erro}")
 
-    return distancia_pares
+    return pares_tempo_percurso

@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from calculadora import GoogleMapsCalculator
 
@@ -12,9 +12,11 @@ class Inputs(BaseModel):
 @app.post("/resposta")
 def resposta(inputs: Inputs):
   calculator = GoogleMapsCalculator()
-  distancia_pares = calculator.gera_pares_distancia(inputs.bases_do_samu, inputs.qth)
-  return distancia_pares
-
+  try:
+    pares_tempo_percurso = calculator.gera_pares_tempo_percurso(inputs.bases_do_samu, inputs.qth)
+    return pares_tempo_percurso
+  except Exception as erro:
+    raise HTTPException(status_code=500, detail=str(erro))
 
 if __name__ == '__main__':
   uvicorn.run(app, port=8000)
@@ -33,6 +35,6 @@ if __name__ == '__main__':
   #   {"coordenadas": [2.824651572924736, -60.67060368260708]}
   # ]
 
-  # distancia_pares = calculator.gera_pares_distancia(bases_do_samu, qth)
+  # pares_tempo_percurso = calculator.gera_pares_distancia(bases_do_samu, qth)
 
-  # print(distancia_pares)
+  # print(pares_tempo_percurso)
