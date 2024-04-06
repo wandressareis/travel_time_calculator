@@ -1,5 +1,5 @@
 ## Calculador de Tempo de Percursos
-API em Python que calcula o tempo de n pontos de partida até um objetivo, considerando tráfego. Projeto originalmente realizado para efetuar a captura de tempo de percurso e distância das bases do SAMU até um ponto de ocorrência e, a partir destes dados, obter insights de melhor trajeto de forma a contribuir com a agilidade do serviço de saúde de emergência. O programa, efetivamente, é uma automação que realiza buscas de endereços no Google Maps e captura o tempo de deslocamento de um ponto ao outro.
+API em Python que calcula o tempo de n pontos de partida até um objetivo, considerando tráfego. Projeto realizado para efetuar a captura de tempo de percurso e distância das bases do SAMU até um ponto de ocorrência e, a partir destes dados, obter insights de melhor trajeto de forma a contribuir com a agilidade do serviço de saúde de emergência. O programa, efetivamente, é uma automação que realiza buscas de endereços no Google Maps e captura o tempo de deslocamento de um ponto ao outro.
 
 ### Bibliotecas:
 
