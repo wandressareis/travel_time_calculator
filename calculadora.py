@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
-# from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -32,7 +32,7 @@ class GoogleMapsCalculator:
     except Exception as erro:
       print("Erro ao obter tempo total: ", erro)
       return None
-
+  
   #---------------------------- FUNÇÃO PRINCIPAL ----------------------------------
   def gera_pares_tempo_percurso(self, bases_do_samu, qth):
     pares_tempo_percurso = {}
@@ -45,8 +45,8 @@ class GoogleMapsCalculator:
           self.driver.get("https://www.google.com/maps/dir/" + ','.join(map(str, partida)) + "/" + ','.join(map(str, destino_coord)))
           tempo_par = self.tempo_total()
           if tempo_par is not None:
-            pares_tempo_percurso[f'{base["id"]}_{j}'] = tempo_par
+            pares_tempo_percurso[f'{base["id"]}'] = tempo_par
         except Exception as erro:
-          print(f"Erro ao calcular a distância entre {base['id']} e destino {j}: {erro}")
+          print(f"Erro ao calcular a distância entre {base['id']} e destino: {erro}")
 
     return pares_tempo_percurso
