@@ -1,5 +1,5 @@
 ## Calculador de Tempo de Percursos
-Script em python que calcula o tempo de n pontos de partida até um objetivo, considerando tráfego.
+API em Python que calcula o tempo de n pontos de partida até um objetivo, considerando tráfego. Projeto originalmente realizado para efetuar a captura de tempo de percurso e distância das bases do SAMU até um ponto de ocorrência e, a partir destes dados, obter insights de melhor trajeto de forma a contribuir com a agilidade do serviço de saúde de emergência. O programa, efetivamente, é uma automação que realiza buscas de endereços no Google Maps e captura o tempo de deslocamento de um ponto ao outro.
 
 ### Bibliotecas:
 
@@ -13,7 +13,10 @@ Script em python que calcula o tempo de n pontos de partida até um objetivo, co
 - Framework Python para criação de APIs REST
 
 #### Pydantic:
-- 
+-  Uma biblioteca para tipagem estática de dados Python. Utilizado para definir o modelo de entrada esperado pela API.
+
+#### Uvicorn:
+- Servidor ASGI. É usado para executar o app FastAPI. 
 
 #### Para instalar as bibliotecas acima:
 
@@ -36,10 +39,10 @@ Script em python que calcula o tempo de n pontos de partida até um objetivo, co
     {
       "bases_do_samu": [
           {"id": 1, "coordenadas": [2.7978590095183815, -60.718581462488835]},
-          {"id": 2, "coordenadas": [2.805911769495148, -60.78350673463364]},
-          {"id": 3, "coordenadas": [2.840917101921869, -60.7562361692347]},
+          {"id": 2, "coordenadas": [2.4419088075792965, -60.91876568947235]},
+          {"id": 3, "coordenadas": [2.164913408340161, -61.04689836849074]},
           {"id": 4, "coordenadas": [2.766412595217544, -60.73516486248878]},
-          {"id": 5, "coordenadas": [2.8233817654294526, -60.754521208092285]},
+          {"id": 5, "coordenadas": [4.348585615593088, -61.141598892426686]},
           {"id": 6, "coordenadas": [2.8607589873052603, -60.73611670998919]}
       ],
       "qth": [
