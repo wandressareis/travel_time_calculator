@@ -28,7 +28,7 @@ class GoogleMapsCalculator:
       xpath = '//div[@data-trip-index="0"]//div[contains(text(), "min")]'
       wait = WebDriverWait(self.driver, timeout=3)
       elemento_tempo = wait.until(EC.presence_of_element_located((By.XPATH, xpath)))
-      return str(elemento_tempo.text.replace('', ''))
+      return str(elemento_tempo.text)
     except Exception as erro:
       print("Erro ao obter tempo total: ", erro)
       return None

@@ -10,7 +10,7 @@ API em Python que calcula o tempo de n pontos de partida até um objetivo, consi
 - API utilizada para manipulação do navegador de forma nativa.
 
 #### FastAPI:
-- Framework Python para criação de APIs REST
+- Framework Python para criação de APIs REST.
 
 #### Pydantic:
 -  Uma biblioteca para tipagem estática de dados Python. Utilizado para definir o modelo de entrada esperado pela API.
