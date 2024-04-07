@@ -26,7 +26,7 @@ API em Python que calcula o tempo de n pontos de partida até um objetivo, consi
 
 #### Para executar:
 
-        uvicorn principal:app --reload
+        uvicorn main:app     
 
 #### Na saída há uma linha como: 
         INFO:     Uvicorn running on http://127.0.0.1:8000
