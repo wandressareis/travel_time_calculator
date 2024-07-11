@@ -36,16 +36,20 @@ class GoogleMapsCalculator:
   def gera_pares_tempo_percurso(self, bases_do_samu, qth):
     pares_tempo_percurso = {}
 
-    for i, base in enumerate(bases_do_samu):
-      partida = base['coordenadas']  # Acessando as coordenadas da base do SAMU
-      for j, destino in enumerate(qth):
-        destino_coord = [float(coord) for coord in destino.split(',')]  # Convertendo as coordenadas do qth para lista de float
-        try:  
-          self.driver.get("https://www.google.com/maps/dir/" + ','.join(map(str, partida)) + "/" + ','.join(map(str, destino_coord)))
-          tempo_par = self.tempo_total()
-          if tempo_par is not None:
-            pares_tempo_percurso[int(base["id"])] = tempo_par
-        except Exception as erro:
-          print(f"Erro ao calcular a distância entre {base['id']} e destino: {erro}")
+    try:
+      for i, base in enumerate(bases_do_samu):
+        partida = base['coordenadas']  # Acessando as coordenadas da base do SAMU
+        for j, destino in enumerate(qth):
+          destino_coord = [float(coord) for coord in destino.split(',')]  # Convertendo as coordenadas do qth para lista de float
+          try:  
+            self.driver.get("https://www.google.com/maps/dir/" + ','.join(map(str, partida)) + "/" + ','.join(map(str, destino_coord)))
+            tempo_par = self.tempo_total()
+            if tempo_par is not None:
+              pares_tempo_percurso[int(base["id"])] = tempo_par
+          except Exception as erro:
+            print(f"Erro ao calcular a distância entre {base['id']} e destino: {erro}")
+    finally:
+      if self.driver:
+        self.driver.quit()
 
     return pares_tempo_percurso
