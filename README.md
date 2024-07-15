@@ -1,53 +1,61 @@
-## Calculador de Tempo de Percursos
-API Python que calcula o tempo de n pontos de partida até um objetivo, considerando tráfego. Projeto realizado para efetuar a captura de tempo de percurso e distância das bases do SAMU até um ponto de ocorrência e, a partir destes dados, obter insights de melhor trajeto de forma a contribuir com a agilidade do serviço de saúde de emergência. O programa, efetivamente, é uma automação que realiza buscas de endereços no Google Maps e captura o tempo de deslocamento de um ponto ao outro.
+## Travel Time Calculator
+Python API that calculates the travel time from multiple starting points to a destination, considering traffic conditions. This project was developed to capture travel time and distance from SAMU bases to an incident location, and from this data, gain insights for the best route to improve the agility of the emergency health service. The program essentially automates address searches on Google Maps and captures the travel time from one point to another.
 
-### Bibliotecas:
+### Libraries:
 
 #### Selenium: 
-- Utilizada para automação: Busca, navegação e web scraping.
+- Used for automation: Searching, navigating, and web scraping.
 
 #### WebDriver Manager:
-- API utilizada para manipulação do navegador de forma nativa.
+- API used to handle the browser natively.
 
 #### FastAPI:
-- Framework Python para criação de APIs REST.
+- Python framework for creating REST APIs.
 
 #### Pydantic:
--  Uma biblioteca para tipagem estática de dados Python. Utilizado para definir o modelo de entrada esperado pela API.
+- A library for static data typing in Python. Used to define the expected input model for the API.
 
 #### Uvicorn:
-- Servidor ASGI. É usado para executar o app FastAPI. 
+- ASGI server. Used to run the FastAPI app.
 
-#### Para instalar as bibliotecas acima:
+#### To install the above libraries:
 
-        pip install requirements.txt
-#### Requisitos para a execução do programa: 
-- Navegador Mozilla Firefox instalado.
+```sh
+pip install requirements.txt
+```
+#### Requirements to run the program: 
+- Mozilla Firefox browser installed
 
-#### Para executar:
+#### To run:
+```sh
+uvicorn main:app     
+```
+#### The output includes a line like:
+```sh
+INFO:     Uvicorn running on http://127.0.0.1:8000
+```
+##### Open your browser at the address that appears.
 
-        uvicorn main:app     
+#### To use the API interactively, type in your browser:
+```sh
+http://127.0.0.1:8000/docs 
+```
 
-#### Na saída há uma linha como: 
-        INFO:     Uvicorn running on http://127.0.0.1:8000
-##### Abra o seu navegador no endereço que aparece.
+#### Test JSON:
+```sh
+{
+"bases_do_samu": [
+  {"id": 1, "coordenadas": [2.7978590095183815, -60.718581462488835]},
+  {"id": 2, "coordenadas": [2.4419088075792965, -60.91876568947235]},
+  {"id": 3, "coordenadas": [2.164913408340161, -61.04689836849074]},
+  {"id": 4, "coordenadas": [2.766412595217544, -60.73516486248878]},
+  {"id": 5, "coordenadas": [4.348585615593088, -61.141598892426686]},
+  {"id": 6, "coordenadas": [2.8607589873052603, -60.73611670998919]}
+],
+"qth": [
+  "2.824651572924736, -60.67060368260708"
+]
+}
+```
 
-#### Para usar a API no modo interativo, digite no navegador:
-        http://127.0.0.1:8000/docs 
-
-#### JSON para teste:
-    {
-      "bases_do_samu": [
-          {"id": 1, "coordenadas": [2.7978590095183815, -60.718581462488835]},
-          {"id": 2, "coordenadas": [2.4419088075792965, -60.91876568947235]},
-          {"id": 3, "coordenadas": [2.164913408340161, -61.04689836849074]},
-          {"id": 4, "coordenadas": [2.766412595217544, -60.73516486248878]},
-          {"id": 5, "coordenadas": [4.348585615593088, -61.141598892426686]},
-          {"id": 6, "coordenadas": [2.8607589873052603, -60.73611670998919]}
-      ],
-      "qth": [
-          "2.824651572924736, -60.67060368260708"
-      ]
-    }
-
-##### Adicione o JSON ao "Request body" que aparece no modo API interativa e clique em executar.
+##### Add the JSON to the "Request body" that appears in the interactive API mode and click execute.
