@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+import time
 
 class GoogleMapsCalculator:
   def __init__(self):
@@ -34,6 +35,7 @@ class GoogleMapsCalculator:
   
   #---------------------------- FUNÇÃO PRINCIPAL ----------------------------------
   def gera_pares_tempo_percurso(self, bases_do_samu, qth):
+    start_time = time.time()
     pares_tempo_percurso = {}
 
     try:
@@ -51,5 +53,5 @@ class GoogleMapsCalculator:
     finally:
       if self.driver:
         self.driver.quit()
-
+    print(time.time() - start_time)
     return pares_tempo_percurso
