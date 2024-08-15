@@ -40,7 +40,6 @@ class GoogleMapsCalculator:
     except Exception as erro:
       print("Erro ao inicializar o driver:", erro)
       return None
-      
 
   def tempo_total(self):
     start_time = time.time()
